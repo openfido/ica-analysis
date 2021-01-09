@@ -1,0 +1,21 @@
+clock {
+	timezone "PST+8PDT";
+	starttime "2014-01-01 0:00:00";
+	stoptime "2014-01-02 0:00:00";
+}
+
+module powerflow
+{
+	solver_method NR;
+}
+
+object voltdump 
+{
+	filename "IEEE-13_voltage.csv";
+}
+
+object currdump 
+{
+	filename "IEEE-13_current.csv";
+}
+
