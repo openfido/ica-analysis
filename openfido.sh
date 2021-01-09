@@ -60,8 +60,8 @@ onexit()
 	fi
 
 	# show input files
-	echo "Output files:"
-	ls -l ${OPENFIDO_OUTPUT} | sed '1,$s/^/  /'
+	debug "Output files:"
+	[ "${OPENFIDO_DEBUG:-no}" = "yes" ] && ls -l ${OPENFIDO_OUTPUT} | sed '1,$s/^/* /'
 
 	if [ $3 -eq 0 ]; then
 		echo "Completed $1 at $(date)"
@@ -88,6 +88,12 @@ error()
 warning()
 {
 	echo "WARNING [${EXECNAME}:${LINENO}]: $*" 
+}
+debug()
+{
+	if [ "${OPENFIDO_DEBUG:-no}" = "yes" ]; then
+		echo $*
+	fi
 }
 require()
 {
@@ -134,7 +140,7 @@ else
 fi
 
 # startup notice
-echo "Starting $0 at $(date) in ${SRCDIR}"
+debug "Starting $0 at $(date) in ${SRCDIR}"
 
 # install required tools
 if [ "${AUTOINSTALL:-yes}" == "yes" -a -f "install.txt" ]; then
@@ -163,7 +169,7 @@ if [ "${AUTOINSTALL:-yes}" == "yes" -a -f "install.txt" ]; then
 		NAME=$(echo $TOOL | cut -f1 -d:)
 		CODE=$(echo $TOOL | cut -f2 -d:)
 		if [ -z "$(which ${NAME})" ]; then
-			echo "Installing ${TOOL}"
+			debug "Installing ${TOOL}"
 			${INSTALL} ${CODE} 1>/dev/stderr || error $E_INSTALL "unable to install tool '${TOOL}' specified in 'install.txt'"
 		fi
 	done
@@ -173,19 +179,19 @@ fi
 rm -rf "$TMP"
 mkdir -p "$TMP"
 cd "$TMP"
-echo "  TMP = ${TMP} (working folder)"
+debug '* ' "TMP = ${TMP} (working folder)"
 
 # pipeline initialization
 [ -f "${OPENFIDO_INIT}" ] && . ${OPENFIDO_INIT}
 
 # display environment information
-echo "Environment settings:"
-echo "  OPENFIDO_INPUT = $OPENFIDO_INPUT"
-echo "  OPENFIDO_OUTPUT = $OPENFIDO_OUTPUT"
+debug "Environment settings:"
+debug '* ' "OPENFIDO_INPUT = $OPENFIDO_INPUT"
+debug '* ' "OPENFIDO_OUTPUT = $OPENFIDO_OUTPUT"
 
-echo "Config settings:"
+debug "Config settings:"
 for NAME in $(printenv | grep '^DEFAULT_' | cut -f1 -d= ) ${DEFAULT_VARLIST}; do
-	echo "  $NAME = $(printenv $NAME)"
+	debug '* ' "$NAME = $(printenv $NAME)"
 done
 
 # requirements
@@ -199,8 +205,8 @@ if [ "${NOINSTALL:-no}" == "yes" ]; then
 fi
 
 # show input files
-echo "Input files:"
-ls -l ${OPENFIDO_INPUT} | sed '1,$s/^/  /'
+debug "Input files:"
+[ "${OPENFIDO_DEBUG:-no}" = "yes" ] && ls -l ${OPENFIDO_INPUT} | sed '1,$s/^/* /'
 
 # perform the main run
 . ${OPENFIDO_RUN}
