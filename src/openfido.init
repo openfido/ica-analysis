@@ -1,3 +1,7 @@
+set -u
+set -e
+set -x
+
 # Defaults
 export DEFAULT_MODELNAME="*.glm"
 export DEFAULT_GLMCONFIG="config.glm"

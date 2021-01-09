@@ -182,7 +182,7 @@ cd "$TMP"
 debug '* ' "TMP = ${TMP} (working folder)"
 
 # pipeline initialization
-[ -f "${OPENFIDO_INIT}" ] && . ${OPENFIDO_INIT} || error "${OPENFIDO_INIT} failed"
+[ -f "${OPENFIDO_INIT}" ] && . ${OPENFIDO_INIT} || error $E_INTERNAL "${OPENFIDO_INIT} failed"
 
 # display environment information
 debug "Environment settings:"
@@ -209,5 +209,5 @@ debug "Input files:"
 [ "${OPENFIDO_DEBUG:-no}" = "yes" ] && ls -l ${OPENFIDO_INPUT} | sed '1,$s/^/* /'
 
 # perform the main run
-sh ${OPENFIDO_RUN} || error $E_INVALID "${OPENFIDO_RUN} failed"
+sh ${OPENFIDO_RUN} || error $E_INTERNAL "${OPENFIDO_RUN} failed"
 

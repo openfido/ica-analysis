@@ -1,3 +1,7 @@
+set -u
+set -e
+set -x
+
 for VAR in $DEFAULT_VARLIST; do
 	gridlabd template config set $VAR $(printenv $VAR)
 done
