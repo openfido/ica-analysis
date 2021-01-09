@@ -1,5 +1,25 @@
+
+#define TIMEZONE=${SHELL grep GLMTIMEZONE config.csv | cut -f2 -d,}
+#define STARTTIME=${SHELL grep GLMSTARTTIME config.csv | cut -f2 -d,}
+#define STOPTIME=${SHELL grep GLMSTOPTIME config.csv | cut -f2 -d,}
+#ifdef STARTTIME
 clock {
-	timezone "PST+8PDT";
-	starttime "2020-01-01 0:00:00 PST";
-	stoptime "2021-01-01 0:00:00 PST";
+	timezone "${TIMEZONE:-PST+8PDT}";
+	starttime ${STARTTIME:-"2020-01-01 00:00:00 PST"};
+	stoptime ${STOPTIME:-"2020-01-01 00:00:00 PST"};
 }
+#else
+#warning STARTTIME not specified
+#endif
+
+#define WEATHER=${SHELL grep GLMWEATHER config.csv | cut -f2 -d,}
+#ifdef WEATHER
+module climate;
+#weather get ${WEATHER}
+object climate
+{
+	tmyfile ${WEATHER};
+}
+#else
+#warning WEATHER not specified
+#endif
