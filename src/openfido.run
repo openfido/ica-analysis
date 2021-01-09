@@ -1,13 +1,11 @@
 for VAR in $DEFAULT_VARLIST; do
 	gridlabd template config set $VAR $(printenv $VAR)
 done
-for MODEL in $(ls -1 ${OPENFIDO_INPUT}/${MODELNAME:-*.glm}); do
-	if [ ! -f "${MODEL}" ]; then
+cp ${OPENFIDO_INPUT}/* .
+for MODEL in $(ls -1 ${MODELNAME:-*.glm}); do
+	if [ -z "${MODEL}" -a ! -f "${MODEL}" ]; then
 		error $E_NOTFOUND "file '${MODEL}' is not found"
-	fi
-	if [ "${MODEL}" != "${OPENFIDO_INPUT}/${GLMCONFIG}" -a "${MODEL}" != "${OPENFIDO_INPUT}/${TEMPLATE}" -a "${MODEL}" != "${OPENFIDO_INPUT}/${GLMRECORD}" ]; then
-		echo "Running ${MODEL}..."
-		export PYTHONPATH="${OPENFIDO_INPUT}"
-		python3 "${OPENFIDO_INPUT}/ica_main.py" "${OPENFIDO_INPUT}/${GLMCONFIG}" "${MODEL}" "${OPENFIDO_INPUT}/${GLMRECORD}"
+	elif [ "${MODEL}" != "${GLMCONFIG}" -a "${MODEL}" != "${TEMPLATE}" -a "${MODEL}" != "${GLMRECORD}"  ]; then
+		gridlabd -D OUTPUT=${OPENFIDO_OUTPUT} "${MODEL}" "${GLMRECORD}" "ica_analysis.glm"
 	fi
 done

@@ -143,7 +143,7 @@ fi
 debug "Starting $0 at $(date) in ${SRCDIR}"
 
 # install required tools
-if [ "${AUTOINSTALL:-yes}" == "yes" -a -f "install.txt" ]; then
+if [ "${OPENFIDO_AUTOINSTALL:-yes}" == "yes" -a -f "install.txt" ]; then
 	UNAME=$(uname -s)
 	if [ "${UNAME}" == "Darwin" ]; then
 		if [ ! -z "$(which brew)" ]; then
@@ -182,7 +182,7 @@ cd "$TMP"
 debug '* ' "TMP = ${TMP} (working folder)"
 
 # pipeline initialization
-[ -f "${OPENFIDO_INIT}" ] && . ${OPENFIDO_INIT}
+[ -f "${OPENFIDO_INIT}" ] && . ${OPENFIDO_INIT} || error "${OPENFIDO_INIT} failed"
 
 # display environment information
 debug "Environment settings:"
@@ -209,5 +209,5 @@ debug "Input files:"
 [ "${OPENFIDO_DEBUG:-no}" = "yes" ] && ls -l ${OPENFIDO_INPUT} | sed '1,$s/^/* /'
 
 # perform the main run
-. ${OPENFIDO_RUN}
+sh ${OPENFIDO_RUN} || error $E_INVALID "${OPENFIDO_RUN} failed"
 

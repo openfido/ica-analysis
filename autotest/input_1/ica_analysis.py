@@ -28,6 +28,7 @@ obj_list = []
 prop_list = []
 viol_val_list = []
 viol_time_list = []
+output_folder = '.'
 
 def check_phases(obj):
     '''
@@ -119,6 +120,10 @@ def on_init(t):
         #                         str(config_globals.iloc[index, 1]))
         # print(gridlabd.get('globals'))
         pass
+
+    output_folder = gridlabd.get_global('OUTPUT')
+    if not output_folder:
+        output_folder = '.'
 
     # In thresh_dict, key = class, val = dictionary w/ info to set thresh
     #   rating: set the threshold as a % of the max rating
@@ -222,7 +227,7 @@ def on_init(t):
     global viol_df
     # Create a master dataframe by concatenating all the dfs in the dictionary
     viol_df = pd.concat(list(df_dict.values()),ignore_index=True)
-    viol_df.to_csv('viol_df_init.csv', index=False)   
+    viol_df.to_csv(f'{output_folder}/ica_limits.csv', index=False)   
 
     return True
       
@@ -260,7 +265,7 @@ def on_commit(t):
                 value /= 2
             # Compare it against the min and max threshold
             if value > row['Max Thresh'] or value < row['Min Thresh']:
-                print('obj %s IS violating'%(row['Object']))
+                # print('obj %s IS violating'%(row['Object']))
 
                 viol_df.at[index,'Violation Time'] = gridlabd.get_global("clock")
                 viol_df.at[index,'Violation Value'] = value
@@ -274,13 +279,13 @@ def on_commit(t):
     return True
 
 def on_term(t):
-    print("\nterminating")
+    # print("\nterminating")
     option = gridlabd.get_global('violation_option')
     if option == '1':
-        viol_df.to_csv('viol_df_opt1.csv', index=False)   
+        viol_df.to_csv(f'{output_folder}/ica_violations.csv', index=False)   
 
     else:
-        pd.DataFrame({'Object':obj_list, 'Property':prop_list, 'Violation Value':viol_val_list, 'Violation Time':viol_time_list}).to_csv('viol_df_opt'+option+'.csv', index=False) 
+        pd.DataFrame({'Object':obj_list, 'Property':prop_list, 'Violation Value':viol_val_list, 'Violation Time':viol_time_list}).to_csv(f'{output_folder}/ica_violations.csv', index=False) 
     
     return None
 

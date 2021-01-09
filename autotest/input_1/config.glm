@@ -11,11 +11,11 @@ module powerflow
 
 object voltdump 
 {
-	filename "IEEE-13_voltage.csv";
+	filename "${OUTPUT:-.}/IEEE-13_voltage.csv";
 }
 
 object currdump 
 {
-	filename "IEEE-13_current.csv";
+	filename "${OUTPUT:-.}/IEEE-13_current.csv";
 }
 

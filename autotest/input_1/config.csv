@@ -1,2 +1,3 @@
 TEMPLATE,ica_analysis.glm
-NOINSTALL=yes
+GLMCONFIG,config.glm
+GLMRECORD,recorders.glm

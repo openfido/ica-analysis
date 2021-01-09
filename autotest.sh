@@ -1,6 +1,6 @@
 #!/bin/bash
 export OPENFIDO_AUTOINSTALL=no
-export OPENFIDO_DEBUG=yes
+export OPENFIDO_DEBUG=no
 export OPENFIDO_INPUT
 export OPENFIDO_OUTPUT
 for OPENFIDO_INPUT in $(find $PWD/autotest -name 'input_*' -type d -print -prune); do
