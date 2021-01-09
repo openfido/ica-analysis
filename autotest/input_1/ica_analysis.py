@@ -113,6 +113,8 @@ def on_init(t):
     
     Option 1 is currently default, Option 2 is commented out. 
     '''
+    global output_folder
+
     if gridlabd.get_global('input_option') == 2:
         # config_globals = pd.read_csv("ica_config_file.csv")
         # for index in range(len(config_globals)):
@@ -279,7 +281,8 @@ def on_commit(t):
     return True
 
 def on_term(t):
-    # print("\nterminating")
+    global output_folder
+
     option = gridlabd.get_global('violation_option')
     if option == '1':
         viol_df.to_csv(f'{output_folder}/ica_violations.csv', index=False)   

@@ -127,3 +127,4 @@ dmypy.json
 # autotest results
 autotest/output_*
 .DS_Store
+autotest/input_*/ica_config.glm
