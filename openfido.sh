@@ -71,12 +71,6 @@ onexit()
 
 	exit $3
 }
-E_INTERNAL=1
-E_NOTFOUND=2
-E_REQUIRED=3
-E_INSTALL=4
-E_DOWNLOAD=5
-E_CONVERT=6
 error()
 {
 	XC=$1
