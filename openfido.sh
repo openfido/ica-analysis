@@ -64,7 +64,7 @@ onexit()
 	[ "${OPENFIDO_DEBUG:-no}" = "yes" ] && ls -l ${OPENFIDO_OUTPUT} | sed '1,$s/^/* /'
 
 	if [ $3 -eq 0 ]; then
-		echo "Completed $1 at $(date)"
+		debug "Completed $1 at $(date)"
 	else
 		echo "Failed $1 at $(date) (see ${STDERR} for details)"
 	fi
@@ -210,4 +210,3 @@ debug "Input files:"
 
 # perform the main run
 sh ${OPENFIDO_RUN} || error $E_INTERNAL "${OPENFIDO_RUN} failed"
-

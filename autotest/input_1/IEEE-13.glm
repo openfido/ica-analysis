@@ -204,22 +204,6 @@ object transformer_configuration {
   	reactance 0.02;
 }
 
-// Regulator configuration
-object regulator_configuration {
-	name regulator_configuration1;
-	connect_type WYE_WYE;
-	band_center 2300;
-	band_width 20.0;
-	time_delay 30.0;
-	raise_taps 16;
-	lower_taps 16;
-	regulation 0.10;
-	Control REMOTE_NODE;// MANUAL OUTPUT_VOLTAGE;
-	//tap_pos_A 10; // Only state these if in manual mode
-	//tap_pos_B 8;
-	//tap_pos_C 11;
-}
-
 // Define line objects
 object overhead_line {
 	 name overhead_line1;
@@ -505,8 +489,6 @@ object load {
      nominal_voltage 2401.7771;
 }
  
-
- 
 // Switch
 object switch {
 	 name switch1;
@@ -517,8 +499,7 @@ object switch {
 }
  
 // Transformer
-
-  object transformer {
+object transformer {
 	name XFMR1;
   	phases "ABCN";
   	from Node633;
@@ -526,9 +507,20 @@ object switch {
   	configuration transformer_configuration1;
 }
   
- 
-  // Regulator
-  
+// Regulator configuration
+object regulator_configuration {
+    name regulator_configuration1;
+    connect_type WYE_WYE;
+    band_center 2300;
+    band_width 20.0;
+    time_delay 1.0 s;
+    raise_taps 16;
+    lower_taps 16;
+    regulation 0.10;
+    Control REMOTE_NODE;
+}
+
+// Regulator
 object regulator {
 	name Reg1;
 	 phases "ABC";
