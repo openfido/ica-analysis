@@ -4,5 +4,5 @@
 module ica_analysis;
 module powerflow
 {
-	violation_record "${OUTPUT:-.}/violation_record.csv";
+	violation_record "/dev/null";
 }
