@@ -16,7 +16,6 @@ shell% gridlabd config.glm IEEE-13.glm ica_analysis.glm
 
 It generates the `solar_capacities.csv` file:
 
-~~~
 | load | solar_capacity[kW] |
 | ---- | ------------------ |
 | Load634 | 840.0 |
@@ -29,4 +28,3 @@ It generates the `solar_capacities.csv` file:
 | Load611 | 1320.0 |
 | Load6711 | 2760.0 |
 | Load6321 | 4200.0 |
-~~~
