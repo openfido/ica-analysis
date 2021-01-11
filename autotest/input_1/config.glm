@@ -19,21 +19,9 @@
 #define STOPTIME=${STARTTIME}
 #endif
 
-clock {
+clock 
+{
 	timezone "${TIMEZONE}";
 	starttime ${STARTTIME};
 	stoptime ${STOPTIME};
 }
-
-#define WEATHER=${SHELL grep GLMWEATHER config.csv | cut -f2 -d,}
-#if ${WEATHER} != ""
-module climate;
-#weather get ${WEATHER}
-object climate
-{
-	name local_weather;
-	tmyfile ${WEATHER};
-}
-#else
-#warning WEATHER not specified, using standard weather conditions
-#endif
