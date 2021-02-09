@@ -1,0 +1,27 @@
+
+#set suppress_repeat_messages=0
+
+#define TIMEZONE=${SHELL grep GLMTIMEZONE config.csv | cut -f2 -d,}
+#if ${TIMEZONE} == ""
+#define TIMEZONE=PST+8PDT
+#warning TIMEZONE not specified, using ${TIMEZONE}
+#endif
+
+#define STARTTIME=${SHELL grep GLMSTARTTIME config.csv | cut -f2 -d,}
+#if ${STARTTIME} == ""
+#define STARTTIME=2020-01-01 00:00:00 ${TIMEZONE:0:3}
+#warning STARTTIME not specified, using ${STARTTIME}
+#endif
+
+#define STOPTIME=${SHELL grep GLMSTOPTIME config.csv | cut -f2 -d,}
+#if ${STOPTIME} == ""
+#warning STOPTIME not specified, using one-shot solution
+#define STOPTIME=${STARTTIME}
+#endif
+
+clock 
+{
+	timezone "${TIMEZONE}";
+	starttime ${STARTTIME};
+	stoptime ${STOPTIME};
+}
