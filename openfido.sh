@@ -26,8 +26,8 @@ else
 	EXECPATH=${EXECPATHNAME%/*}
 	EXECNAME=${EXECPATHNAME##*/}
 fi
-OPENFIDO_INIT="$EXECPATH/src/openfido.init"
-OPENFIDO_RUN="$EXECPATH/src/openfido.run"
+OPENFIDO_INIT="$EXECPATH/src/openfido-init.sh"
+OPENFIDO_RUN="$EXECPATH/src/openfido-run.sh"
 
 #
 # Exit codes
@@ -203,4 +203,4 @@ debug "Input files:"
 [ "${OPENFIDO_DEBUG:-no}" = "yes" ] && ls -l ${OPENFIDO_INPUT} | sed '1,$s/^/* /'
 
 # perform the main run
-sh ${OPENFIDO_RUN} || error $E_INTERNAL "${OPENFIDO_RUN} failed"
+. ${OPENFIDO_RUN} || error $E_INTERNAL "${OPENFIDO_RUN} failed"

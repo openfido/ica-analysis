@@ -6,7 +6,7 @@ set -x
 export DEFAULT_MODELNAME="*.glm"
 export DEFAULT_GLMCONFIG=""
 export DEFAULT_GLMRECORD=""
-export DEFAULT_TEMPLATE="ica_analysis.zip"
+export DEFAULT_TEMPLATE="ica_analysis"
 export DEFAULT_VARLIST="GITHUBUSERCONTENT ORGANIZATION GITUSER GITREPO GITBRANCH"
 
 # Check and load startup environment
@@ -18,3 +18,7 @@ for VAR in $DEFAULT_VARLIST; do
 	getconfig $VAR $(gridlabd template config get $VAR)
 done
 
+# Get template
+if [ ! -z "$TEMPLATE" ]; then
+	gridlabd template get $TEMPLATE
+fi
