@@ -1,5 +1,4 @@
 TEMPLATE,ica_analysis
-GITBRANCH,develop-ica-analysis
 GLMCONFIG,config.glm
 GLMRECORD,
 GLMTIMEZONE,PST+8PDT

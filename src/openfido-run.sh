@@ -1,7 +1,7 @@
 set -u
 set -e
 set -x
-
+OPTIONS="${OPTIONS:-} -D show_progress=FALSE -D OUTPUT=${OPENFIDO_OUTPUT}"
 for VAR in $DEFAULT_VARLIST; do
 	gridlabd template config set $VAR $(printenv $VAR)
 done
@@ -17,6 +17,6 @@ for MODEL in $(ls -1 ${MODELNAME:-*.glm}); do
 			error $E_NOTFOUND "template '${TEMPLATE}' is not found in '${GLPATH}"
 		fi
 		cp "$GLPATH/$TEMPLATE".* .
-		gridlabd -D OUTPUT=${OPENFIDO_OUTPUT} ${GLMCONFIG} "${MODEL}" ${GLMRECORD} ${TEMPLATE}.glm
+		gridlabd ${OPTIONS} ${GLMCONFIG} ${MODEL} ${GLMRECORD} ${TEMPLATE}.glm
 	fi
 done

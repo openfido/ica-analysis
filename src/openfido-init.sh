@@ -18,3 +18,7 @@ for VAR in $DEFAULT_VARLIST; do
 	getconfig $VAR $(gridlabd template config get $VAR)
 done
 
+# Get template
+if [ ! -z "$TEMPLATE" ]; then
+	gridlabd template get $TEMPLATE
+fi
