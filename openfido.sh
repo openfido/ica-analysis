@@ -26,8 +26,8 @@ else
 	EXECPATH=${EXECPATHNAME%/*}
 	EXECNAME=${EXECPATHNAME##*/}
 fi
-OPENFIDO_INIT="$EXECPATH/src/openfido.init"
-OPENFIDO_RUN="$EXECPATH/src/openfido.run"
+OPENFIDO_INIT="$EXECPATH/src/openfido-init.sh"
+OPENFIDO_RUN="$EXECPATH/src/openfido-run.sh"
 
 #
 # Exit codes
