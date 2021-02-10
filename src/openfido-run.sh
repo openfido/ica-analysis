@@ -10,6 +10,13 @@ for MODEL in $(ls -1 ${MODELNAME:-*.glm}); do
 	if [ -z "${MODEL}" -a ! -f "${MODEL}" ]; then
 		error $E_NOTFOUND "file '${MODEL}' is not found"
 	elif [ "${MODEL}" != "${GLMCONFIG}" -a "${MODEL}" != "${TEMPLATE}" -a "${MODEL}" != "${GLMRECORD}"  ]; then
-		gridlabd -D OUTPUT=${OPENFIDO_OUTPUT} ${GLMCONFIG} "${MODEL}" ${GLMRECORD} "ica_analysis.glm"
+		export GLPATH="$(gridlabd --version=install)/share/gridlabd/template/$ORGANIZATION"
+		if [ -d "${GLPATH}/${TEMPLATE}" ]; then
+			export GLPATH="$(gridlabd --version=install)/share/gridlabd/template/$ORGANIZATION/${TEMPLATE}"
+		elif [ ! -f "${GLPATH}/${TEMPLATE}.glm" ]; then
+			error $E_NOTFOUND "template '${TEMPLATE}' is not found in '${GLPATH}"
+		fi
+		cp "$GLPATH/$TEMPLATE.py" .
+		gridlabd -D OUTPUT=${OPENFIDO_OUTPUT} ${GLMCONFIG} "${MODEL}" ${GLMRECORD} "${GLPATH}/${TEMPLATE}.glm"
 	fi
 done
