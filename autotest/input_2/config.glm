@@ -25,3 +25,10 @@ clock
 	starttime ${STARTTIME};
 	stoptime ${STOPTIME};
 }
+
+module powerflow
+{
+#ifdef powerflow::violation_watchset
+	violation_watchset NODE;
+#endif
+}

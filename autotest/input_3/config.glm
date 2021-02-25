@@ -25,3 +25,8 @@ clock
 	starttime ${STARTTIME};
 	stoptime ${STOPTIME};
 }
+
+module powerflow
+{
+	violation_watchset LINK;
+}
