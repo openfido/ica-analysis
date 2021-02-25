@@ -30,7 +30,6 @@ clock {
 module powerflow {
 	solver_method FBS;
 }
-module assert;
 
 
 // Phase Conductor for 721: 1,000,000 AA,CN
@@ -484,21 +483,6 @@ object node:703 {
 	 voltage_B -2400.000000 -1385.640646j;
 	 voltage_C 0.000000+2771.281292j;
 	 nominal_voltage 4800;
-	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4885.4400000000005-0.17d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4824.4800000000005-120.7d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4816.320000000001+120.2d;
-	};
 }
 
 object node:704 {
@@ -508,21 +492,6 @@ object node:704 {
 	 voltage_B -2400.000000 -1385.640646j;
 	 voltage_C 0.000000+2771.281292j;
 	 nominal_voltage 4800;
-	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4904.16-0.17d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4821.12-120.61d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4831.2+120.46d;
-	};
 }
 
 object node:705 {
@@ -577,22 +546,6 @@ object node:710 {
 	 voltage_B -2400.000000 -1385.640646j;
 	 voltage_C 0.000000+2771.281292j;
 	 nominal_voltage 4800;
-	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4811.519999+0.01d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4784.64-120.77d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4741.44+119.91d;
-	};
-
 }
 
 object node:711 {
@@ -612,37 +565,6 @@ object load:801 {
 	 constant_power_B 140000.000000+70000.000000j;
 	 constant_power_C 350000.000000+175000.000000j;
 	 nominal_voltage 4800;
-	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4952.16-0.08d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4869.12-120.39d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4887.84+120.61d;
-	};
-
-	object complex_assert {
-		target measured_voltage_AB;
-		within 1.0;
-		value 4952.16-0.08d;
-	};
-	object complex_assert {
-		target measured_voltage_BC;
-		within 1.0;
-		value 4869.12-120.39d;
-	};
-	object complex_assert {
-		target measured_voltage_CA;
-		within 1.0;
-		value 4887.84+120.61d;
-	};
 }
 
 object load:812 {
@@ -653,37 +575,6 @@ object load:812 {
 	 voltage_C 0.000000+2771.281292j;
 	 constant_power_C 85000.000000+40000.000000j;
 	 nominal_voltage 4800;
-	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4915.2-0.11d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4835.04-120.61d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4839.36+120.46d;
-	};
-
-	object complex_assert {
-		target measured_voltage_AB;
-		within 1.0;
-		value 4915.2-0.11d;
-	};
-	object complex_assert {
-		target measured_voltage_BC;
-		within 1.0;
-		value 4835.04-120.61d;
-	};
-	object complex_assert {
-		target measured_voltage_CA;
-		within 1.0;
-		value 4839.36+120.46d;
-	};
 }
 
 object load:813 {
@@ -737,38 +628,6 @@ object load:822 {
 	 constant_current_B -27.212870 -17.967408j;
 	 constant_current_C -0.383280+4.830528j;
 	 nominal_voltage 4800;
-	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4888.8-0.3d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4777.92-120.62d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4811.04+120.68d;
-	};
-	object complex_assert {
-		target measured_voltage_AB;
-		within 50.0;
-		value 4888.8-0.3d;
-	};
-	object complex_assert {
-		target measured_voltage_BC;
-		within 50.0;
-		value 4777.92-120.62d;
-	};
-	object complex_assert {
-		target measured_voltage_CA;
-		within 50.0;
-		value 4811.04+120.68d;
-	};
-
-
 }
 
 object load:824 {
@@ -789,37 +648,6 @@ object load:825 {
 	 voltage_C 0.000000+2771.281292j;
 	 constant_power_B 42000.000000+21000.000000j;
 	 nominal_voltage 4800;
-	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4896.96-0.23d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4801.44-120.65d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4818.72+120.55d;
-	};
-
-	object complex_assert {
-		target measured_voltage_AB;
-		within 1.0;
-		value 4896.96-0.23d;
-	};
-	object complex_assert {
-		target measured_voltage_BC;
-		within 1.0;
-		value 4801.44-120.65d;
-	};
-	object complex_assert {
-		target measured_voltage_CA;
-		within 1.0;
-		value 4818.72+120.55d;
-	};
 }
 
 object load:827 {
@@ -932,37 +760,6 @@ object load:837 {
 	 voltage_C 0.000000+2771.281292j;
 	 constant_current_A 29.166667 -14.583333j;
 	 nominal_voltage 4800;
-	 	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4798.08+0.02d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4785.12-120.71d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4738.5599999999995+119.79d;
-	};
-
-	object complex_assert {
-		target measured_voltage_AB;
-		within 1.0;
-		value 4798.08+0.02d;
-	};
-	object complex_assert {
-		target measured_voltage_BC;
-		within 1.0;
-		value 4785.12-120.71d;
-	};
-	object complex_assert {
-		target measured_voltage_CA;
-		within 1.0;
-		value 4738.5599+119.79d;
-	};
 }
 
 object load:838 {
@@ -992,38 +789,7 @@ object load:841 {
 	 voltage_B -2400.000000 -1385.640646j;
 	 voltage_C 0.000000+2771.281292j;
 	 constant_current_C -0.586139+9.765222j;
-	 nominal_voltage 4800;
-	 object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4790.88+0.07d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4781.76-120.75d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4727.52+119.76d;
-	};
-	object complex_assert {
-		target measured_voltage_AB;
-		within 1.0;
-		value 4790.88+0.07d;
-	};
-	object complex_assert {
-		target measured_voltage_BC;
-		within 1.0;
-		value 4781.76-120.75d;
-	};
-	object complex_assert {
-		target measured_voltage_CA;
-		within 1.0;
-		value 4727.52+119.76d;
-	};
-	 
+	 nominal_voltage 4800; 
 }
 
 object load:842 {
@@ -1035,36 +801,6 @@ object load:842 {
 	 constant_impedance_A 2304.000000+1152.000000j;
 	 constant_impedance_B 221.915014+104.430595j;
 	 nominal_voltage 4800;
-	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4914.24-0.15d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4832.16-120.59d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4841.28+120.48d;
-	};
-	object complex_assert {
-		target measured_voltage_AB;
-		within 1.0;
-		value 4914.24-0.15d;
-	};
-	object complex_assert {
-		target measured_voltage_BC;
-		within 1.0;
-		value 4832.16-120.59d;
-	};
-	object complex_assert {
-		target measured_voltage_CA;
-		within 1.0;
-		value 4841.28+120.48d;
-	};
 }
 
 object load:844 {
@@ -1075,37 +811,6 @@ object load:844 {
 	 voltage_C 0.000000+2771.281292j;
 	 constant_power_A 42000.000000+21000.000000j;
 	 nominal_voltage 4800;
-	object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 4876.8-0.16d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 4819.68-120.68d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 4810.08+120.17d;
-	};
-
-	object complex_assert {
-		target measured_voltage_AB;
-		within 1.0;
-		value 4876.8-0.16d;
-	};
-	object complex_assert {
-		target measured_voltage_BC;
-		within 1.0;
-		value 4819.68-120.68d;
-	};
-	object complex_assert {
-		target measured_voltage_CA;
-		within 1.0;
-		value 4810.08+120.17d;
-	};
 }
 
 object transformer_configuration:400 {
@@ -1131,30 +836,6 @@ object node:775 {
 	 voltage_B -240.000000 -138.564065j;
 	 voltage_C -0.000000+277.128129j;
 	 nominal_voltage 480;
-	 object complex_assert {
-		target voltage_AB;
-		within 1.0;
-		value 485.3280000-0.11d;
-	};
-	object complex_assert {
-		target voltage_BC;
-		within 1.0;
-		value 480.576-120.73d;
-	};
-	object complex_assert {
-		target voltage_CA;
-		within 1.0;
-		value 478.416+120.07d;
-	};
-// expected:
-// 	485.2791-.93167j -245.57100-413.0958j -239.6418+413.903j		
-//	voltage_A	voltage_B	voltage_C
-// actual:
-//	+491.9+4.82674j	-247.872-422.574j	-244.028+417.748j
-//  +491.9+4.82674j	-247.872-422.574j	-244.028+417.748j
-// voltages set to original
-// +241.693-138.283j	-243.64-137.403j	+1.9466+275.686j
-// defaults 277.1280-30.0d 277.128-150d 277.128+90d
 }
 
 object regulator_configuration:79978101 {
