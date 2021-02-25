@@ -28,5 +28,7 @@ clock
 
 module powerflow
 {
+#ifdef powerflow::violation_watchset
 	violation_watchset LINK;
+#endif
 }
