@@ -1,5 +1,6 @@
 
 #set suppress_repeat_messages=0
+#set iteration_limit=10000
 
 #define TIMEZONE=${SHELL grep GLMTIMEZONE config.csv | cut -f2 -d,}
 #if ${TIMEZONE} == ""
@@ -24,4 +25,9 @@ clock
 	timezone "${TIMEZONE}";
 	starttime ${STARTTIME};
 	stoptime ${STOPTIME};
+}
+
+module powerflow
+{
+	violation_watchset NODE;
 }
