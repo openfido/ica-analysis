@@ -19,6 +19,6 @@ for VAR in $DEFAULT_VARLIST; do
 done
 
 # Get template
-if [ ! -z "$TEMPLATE" ]; then
+if [ ! -z "$TEMPLATE" -a "$(gridlabd template list $TEMPLATE)" != "$TEMPLATE" ]; then
 	gridlabd template get $TEMPLATE
 fi
